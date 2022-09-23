@@ -1,6 +1,11 @@
 package utils
 
-import "strings"
+import (
+	"strings"
+	"time"
+
+	"github.com/PedroPinheiroS/eternal-trainer/env"
+)
 
 func removeSpaces(code string) string {
 	return strings.ReplaceAll(code, " ", "")
@@ -22,4 +27,12 @@ func CleanToken(token string) string {
 	token = removeBreakLines(token)
 
 	return token
+}
+
+func StopAllMacros() bool {
+	return time.Now().Hour() == env.HoraDeslogar && time.Now().Minute() == env.MinutoDeslogar
+}
+
+func InitAllMacros() bool {
+	return time.Now().Hour() == env.HoraLogar && time.Now().Minute() == env.MinutoLogar
 }

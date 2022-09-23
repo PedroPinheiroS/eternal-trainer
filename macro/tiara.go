@@ -12,7 +12,11 @@ func rechargeTiara(wg *sync.WaitGroup) {
 	defer wg.Done()
 	for {
 		robotgo.KeyTap("6")
-		log.Println("tiara recharged")
 		robotgo.Sleep(env.Tiara)
+
+		if !isOnline {
+			log.Println("Stopping Food")
+			break
+		}
 	}
 }

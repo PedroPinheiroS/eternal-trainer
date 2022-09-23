@@ -10,9 +10,14 @@ import (
 
 func castCreateRune(wg *sync.WaitGroup) {
 	defer wg.Done()
+
 	for {
 		robotgo.KeyTap("8")
-		log.Println("gfb done")
 		robotgo.Sleep(env.Rune)
+
+		if !isOnline {
+			log.Println("Stopping Food")
+			break
+		}
 	}
 }

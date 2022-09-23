@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"log"
+	"time"
 
 	"github.com/PedroPinheiroS/eternal-trainer/env"
 	"github.com/PedroPinheiroS/eternal-trainer/utils"
@@ -25,6 +26,8 @@ func connect() (*client.Client, error) {
 
 func RetrieveToken() (string, error) {
 	log.Println("Connecting to server...")
+
+	time.Sleep(10 * time.Second)
 
 	c, err := connect()
 	if err != nil {

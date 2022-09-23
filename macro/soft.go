@@ -10,9 +10,14 @@ import (
 
 func rechargeSoftBoots(wg *sync.WaitGroup) {
 	defer wg.Done()
+
 	for {
 		robotgo.KeyTap("0")
-		log.Println("soft recharged")
 		robotgo.Sleep(env.SoftBoots)
+
+		if !isOnline {
+			log.Println("Stopping Soft")
+			break
+		}
 	}
 }

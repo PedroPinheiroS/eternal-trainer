@@ -10,18 +10,14 @@ import (
 
 func rechargeLifeRing(wg *sync.WaitGroup) {
 	defer wg.Done()
-	for {
-		robotgo.KeyTap("7")
-		log.Println("ring of healing recharged")
-		robotgo.Sleep(env.LifeRing)
-	}
-}
 
-func rechargeRingOfHealing(wg *sync.WaitGroup) {
-	defer wg.Done()
 	for {
 		robotgo.KeyTap("7")
-		log.Println("ring of healing recharged")
-		robotgo.Sleep(env.RingOfHealing)
+		robotgo.Sleep(env.LifeRing)
+
+		if !isOnline {
+			log.Println("Stopping Food")
+			break
+		}
 	}
 }

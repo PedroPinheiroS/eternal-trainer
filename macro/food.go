@@ -9,9 +9,14 @@ import (
 
 func eatFood(wg *sync.WaitGroup) {
 	defer wg.Done()
+
 	for {
 		robotgo.KeyTap("9")
-		log.Println("Food ate")
-		robotgo.Sleep(30)
+		robotgo.Sleep(10)
+
+		if !isOnline {
+			log.Println("Stopping Food")
+			break
+		}
 	}
 }
